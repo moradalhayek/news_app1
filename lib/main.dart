@@ -9,7 +9,7 @@ import 'package:news_app1/shared/styles/const.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
-    Bloc.observer = MyBlocObserver();
+  Bloc.observer = MyBlocObserver();
 
   runApp(const MyApp());
 }
@@ -21,23 +21,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
-    return  MultiBlocProvider(
-      
-      providers: [
-        BlocProvider(create: (context)=>NewsCubit()..getHealth()..getSports()..getTechnology())
-      ],
-     child: BlocConsumer<NewsCubit,NewsStates>(
-        listener:(context, state) {
-          
-        } ,
-        builder: (context, state) {
-        return   const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: NewsLayout()
-       ); 
-        },)
-      
-    );
-     
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+              create: (context) => NewsCubit()
+                ..getHealth()
+                ..getSports()
+                ..getTechnology())
+        ],
+        child: BlocConsumer<NewsCubit, NewsStates>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            return const MaterialApp(
+                debugShowCheckedModeBanner: false, home: NewsLayout());
+          },
+        ));
   }
 }

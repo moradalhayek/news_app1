@@ -13,7 +13,7 @@ class Technology extends StatelessWidget {
     return BlocConsumer<NewsCubit, NewsStates>(
       listener: (context, state) {},
       builder: (context, state) {
-        var list=NewsCubit.get(context).technology;
+        var list = NewsCubit.get(context).technology;
         return Scaffold(
           appBar: AppBar(
             title: const Text(
@@ -22,13 +22,14 @@ class Technology extends StatelessWidget {
             ),
           ),
           body: ConditionalBuilder(
-        condition:list.isNotEmpty ,
-        builder:(context) =>  ListView.separated(
-          
-          itemBuilder: (context,index)=>builedItem(context,list[index]),
-        separatorBuilder: (context,index)=>Container(),
-        itemCount:list.length) ,
-        fallback:(context)=>const Center(child: CircularProgressIndicator()) ),
+              condition: list.isNotEmpty,
+              builder: (context) => ListView.separated(
+                  itemBuilder: (context, index) =>
+                      builedItem(context, list[index]),
+                  separatorBuilder: (context, index) => Container(),
+                  itemCount: list.length),
+              fallback: (context) =>
+                  const Center(child: CircularProgressIndicator())),
         );
       },
     );

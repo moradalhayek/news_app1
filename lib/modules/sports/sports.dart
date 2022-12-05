@@ -13,7 +13,7 @@ class Sports extends StatelessWidget {
     return BlocConsumer<NewsCubit, NewsStates>(
       listener: (context, state) {},
       builder: (context, state) {
-        var list =NewsCubit.get(context).sports;
+        var list = NewsCubit.get(context).sports;
         return Scaffold(
           appBar: AppBar(
             // ignore: prefer_const_constructors
@@ -22,12 +22,15 @@ class Sports extends StatelessWidget {
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
-          body:ConditionalBuilder(
-        condition:list.isNotEmpty ,
-        builder:(context) =>  ListView.separated(itemBuilder: (context,index)=>builedItem(context,list[index]),
-        separatorBuilder: (context,index)=>Container(),
-        itemCount:list.length) ,
-        fallback:(context)=>const Center(child: CircularProgressIndicator()) ) ,
+          body: ConditionalBuilder(
+              condition: list.isNotEmpty,
+              builder: (context) => ListView.separated(
+                  itemBuilder: (context, index) =>
+                      builedItem(context, list[index]),
+                  separatorBuilder: (context, index) => Container(),
+                  itemCount: list.length),
+              fallback: (context) =>
+                  const Center(child: CircularProgressIndicator())),
         );
       },
     );
